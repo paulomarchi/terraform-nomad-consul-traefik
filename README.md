@@ -12,5 +12,5 @@ Requeriments
 
 Running the example
 
-run `terraform apply -var 'key_name={your_key_name}'` 
+run `terraform apply -var 'aws_access_key={your_access_key}' -var 'aws_secret_key=your_secret_key' -var 'aws_key_name={your_keypair}' -var 'path_private_key={your_path_private_key}'`
 
