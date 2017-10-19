@@ -1,0 +1,22 @@
+---
+- name: Install metadata dependences
+  pip:
+    executable: /usr/bin/pip3
+    name: requests
+    state: latest
+
+- name: Install nosce
+  copy:
+    src: metadata.py
+    dest: /usr/local/bin/metadata
+    mode: 0755
+    owner: root
+    group: root
+ 
+- name: Create nosce dir
+  file:
+    path: /etc/nosce
+    state: directory
+    owner: root
+    group: root
+    mode: 0644

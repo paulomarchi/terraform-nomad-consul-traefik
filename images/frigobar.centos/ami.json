@@ -1,0 +1,64 @@
+{
+    "variables": {
+        "profile": "",
+        "region": "us-east-2",
+        "aws_ami_name": "nomad/pmarchi-centos-stable-standard-{{ timestamp }}",
+        "instance_type": "t2.medium",
+        "ansible_playbook_file": "playbook.yaml"
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "profile": "{{user `profile`}}",
+        "region": "{{user `region`}}",
+        "instance_type": "t2.medium",
+        "ssh_username": "centos",
+        "ami_name": "{{user `aws_ami_name`}}",
+        "ami_description": "Nomad Server",
+        "temporary_key_pair_name": "packer {{ uuid }}",
+        "source_ami_filter": {
+          "filters": {
+            "virtualization-type": "hvm",
+            "name": "CentOS Linux 7 x86_64*",
+            "root-device-type": "ebs"
+          },
+          "most_recent": true
+        },
+        "launch_block_device_mappings": [
+          {
+            "device_name": "/dev/sda1",
+            "volume_size": 100,
+            "delete_on_termination": true,
+            "volume_type": "gp2"
+          }
+        ],
+        "ami_block_device_mappings": [
+          {
+            "device_name": "/dev/sda1",
+            "volume_size": 100,
+            "delete_on_termination": true,
+            "volume_type": "gp2"
+          }
+        ]
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": [
+          "sudo yum install epel-release -y",
+          "sudo yum update -y",
+          "sudo yum install cloud-init awscli unzip gcc python-devel git python2-pip python34-pip python34-setuptools ansible -y"
+        ]
+      },
+        {
+          "type": "ansible-local",
+          "playbook_file": "playbook.yml",
+          "inventory_file": "../playbook/hosts",
+          "playbook_dir": "../playbook",
+          "extra_arguments": [
+            "--limit localhost"
+          ]
+        }
+    ]
+}

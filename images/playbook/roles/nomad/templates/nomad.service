@@ -1,0 +1,19 @@
+[Service]
+User=nomad
+Group=nomad
+Restart=on-failure
+RestartSec=10
+EnvironmentFile=/etc/nosce/metadata
+EnvironmentFile=/etc/nosce/nomad
+ExecStart=/usr/local/bin/nomad agent \
+	-data-dir {{ nomad_data_dir }} \
+	-config {{ nomad_config_dir }} \
+ExecReload=/bin/kill -s HUP $MAINPID
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+

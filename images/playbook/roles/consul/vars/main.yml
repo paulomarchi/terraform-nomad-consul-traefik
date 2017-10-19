@@ -1,0 +1,11 @@
+consul_version: 0.9.3
+consul_zip_archive: "consul_{{ consul_version }}_linux_amd64.zip"
+consul_download_path: "https://releases.hashicorp.com/consul/{{ consul_version }}/{{ consul_zip_archive }}"
+consul_download_checksum: "sha256:9c6d652d772478d9ff44b6decdd87d980ae7e6f0167ad0f7bd408de32482f632"
+consul_download_directory: "/tmp"
+consul_config_dir: "/etc/consul/conf.d"
+consul_data_dir: "/var/local/consul"
+consul_home_dir: "/var/local/consul"
+consul_log_file: "/var/log/consul.log"
+consul_server: false
+nosce_dir: /etc/nosce

@@ -1,0 +1,8 @@
+[Unit]
+Description=Run ECR hourly
+
+[Timer]
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target

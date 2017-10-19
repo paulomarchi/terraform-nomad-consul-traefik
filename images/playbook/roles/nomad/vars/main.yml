@@ -1,0 +1,9 @@
+nomad_version: 0.6.3
+nomad_zip_archive: "nomad_{{ nomad_version }}_linux_amd64.zip"
+nomad_download_path: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/{{ nomad_zip_archive }}"
+nomad_download_checksum: "sha256:908ee049bda380dc931be2c8dc905e41b58e59f68715dce896d69417381b1f4e"
+nomad_download_directory: "/tmp"
+nomad_config_dir: "/etc/nomad/conf.d"
+nomad_data_dir: "/var/lib/nomad"
+nomad_home_dir: "/var/lib/nomad"
+nosce_dir: /etc/nosce

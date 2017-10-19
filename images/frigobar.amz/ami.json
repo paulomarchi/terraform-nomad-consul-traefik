@@ -1,0 +1,58 @@
+{
+    "variables": {
+        "profile": "",
+        "region": "us-east-2",
+        "aws_ami_name": "nomad/pmarchi-amazon-linux-stable-standard-{{ timestamp }}",
+        "instance_type": "t2.medium",
+        "ansible_playbook_file": "playbook.yaml"
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "profile": "{{user `profile`}}",
+        "region": "{{user `region`}}",
+        "instance_type": "t2.medium",
+        "ssh_username": "ec2-user",
+        "ami_name": "{{user `aws_ami_name`}}",
+        "ami_description": "Nomad Server",
+        "temporary_key_pair_name": "packer {{ uuid }}",
+        "source_ami_filter": {
+          "filters": {
+            "virtualization-type": "hvm",
+            "name": "Amazon Linux AMI*",
+            "root-device-type": "ebs"
+          },
+          "most_recent": true
+        },
+        "launch_block_device_mappings": [
+          {
+            "device_name": "/dev/xvda",
+            "volume_size": 100,
+            "delete_on_termination": true,
+            "volume_type": "gp2"
+          }
+        ]
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": [
+            "sudo yum update -y",
+            "sudo yum install gcc python-devel git python34-setuptools -y",
+            "sudo easy_install -U pip",
+            "sudo easy_install-3.4 pip",
+            "sudo pip install ansible"
+        ]
+      },
+        {
+          "type": "ansible-local",
+          "playbook_file": "playbook.yml",
+          "inventory_file": "../playbook/hosts",
+          "playbook_dir": "../playbook",
+          "extra_arguments": [
+            "--limit localhost"
+          ]
+        }
+    ]
+}

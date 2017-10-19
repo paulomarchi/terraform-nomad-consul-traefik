@@ -1,0 +1,50 @@
+- name: "Install dnsmasq"
+  package:
+    name: dnsmasq
+    state: latest
+
+- name: "Register dnsmasq"
+  service:
+    name: "dnsmasq"
+    enabled: true
+
+- name: "Configure dnsmasq"
+  copy:
+    src: "dnsmasq.conf"
+    dest: "/etc/dnsmasq.conf"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Create dnsmasq.d"
+  file:
+    path: "/etc/dnsmasq.d"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: "Add dnsmasq-config-dns"
+  copy:
+    src: "dnsmasq-config-dns"
+    dest: "/usr/bin/dnsmasq-config-dns"
+    owner: root
+    group: root
+    mode: 0755
+
+- name: "Configure dnsmasq service unit"
+  copy:
+    src: "dnsmasq.service"
+    dest: "/usr/lib/systemd/system/dnsmasq.service"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Use localhost as DNS"
+  copy:
+    src: "resolved.conf"
+    dest: "/etc/systemd/resolved.conf"
+    owner: root
+    group: root
+    mode: 0644
+

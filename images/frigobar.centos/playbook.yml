@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become: yes
+  roles:
+    - metadata
+    - dnsmasq
+    - consul
+    - role: docker
+      with_compose: true
+    - nomad

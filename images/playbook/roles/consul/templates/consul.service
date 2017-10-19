@@ -1,0 +1,22 @@
+[Unit]
+Description=Consul Key Value Agent
+Requires=cloud-init.service
+After=cloud-init.service
+
+[Service]
+User=consul
+Restart=on-failure
+RestartSec=10
+Environment=GOMAXPROCS=2
+EnvironmentFile=/etc/nosce/metadata
+EnvironmentFile=/etc/nosce/consul
+ExecStart=/usr/local/bin/consul agent \
+	-advertise ${EC2_LOCAL_IPV4} \
+	-data-dir {{ consul_data_dir }} \
+	-config-dir {{ consul_config_dir }} 
+ExecReload=/bin/kill -s HUP $MAINPID
+KillSignal=SIGINT
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

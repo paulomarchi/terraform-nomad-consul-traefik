@@ -1,0 +1,78 @@
+---
+- name: "Installing consul dependencies"
+  yum:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+  - unzip
+  - jq
+  when: ansible_os_family == 'RedHat'
+- name: Download consul
+  get_url:
+    url: "{{ consul_download_path }}"
+    dest: "{{consul_download_directory}}"
+    checksum: "{{ consul_download_checksum }}"
+
+- name: Unarchive consul
+  unarchive:
+    src: "{{consul_download_directory}}/{{consul_zip_archive}}"
+    dest: /usr/local/bin
+
+- name: Create consul system group
+  group:
+    name: consul
+    state: present
+    system: yes
+
+- name: Create consul system user
+  user:
+    name: consul
+    comment: "Consul user"
+    group: consul
+    shell: "/bin/false"
+    system: yes
+    home:  "{{ consul_home_dir }}"
+
+- name: Copy consul systemd unit
+  template:
+    src: consul.service
+    dest: /etc/systemd/system
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Registering consul"
+  service:
+    name: "consul"
+    enabled: true
+
+- name: "Add dnsmasq config"
+  copy:
+    src: "dnsmasq-consul"
+    dest: "/etc/dnsmasq.d/10-consul"
+
+- name: "Add consul config folder"
+  file:
+    path: "{{ consul_config_dir }}"
+    state: directory
+    owner: consul
+    group: consul
+    mode: 0754
+    recurse: yes
+
+- name: Copy consul initial config
+  copy:
+    src: consul-main.json
+    dest: "{{ consul_config_dir }}"
+    owner: consul
+    group: consul
+    mode: 0754
+
+- name: copy nosce empty file
+  copy:
+    src: nosce-consul
+    dest: "{{ nosce_dir }}/consul"
+    owner: root
+    group: root
+    mode: 0754

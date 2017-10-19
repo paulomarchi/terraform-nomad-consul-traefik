@@ -1,0 +1,65 @@
+---
+- name: Download nomad
+  get_url:
+    url: "{{ nomad_download_path }}"
+    dest: "{{ nomad_download_directory }}"
+    checksum: "{{ nomad_download_checksum }}"
+
+- name: Unarchive nomad
+  unarchive:
+    src: "{{ nomad_download_directory }}/{{ nomad_zip_archive }}"
+    dest: /usr/local/bin
+
+- name: Create nomad system group
+  group:
+    name: nomad
+    state: present
+    system: yes
+
+- name: Create nomad system user
+  user:
+    name: nomad
+    comment: "Nomad user"
+    group: nomad
+    shell: "/bin/false"
+    system: yes
+    home: "{{ nomad_data_dir }}"
+
+- name: Copy nomad systemd unit
+  template:
+    src: nomad.service
+    dest: /etc/systemd/system
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Add user nomad to docker group
+  user:
+    append: yes
+    name: nomad
+    groups: docker
+
+- name: "Add nomad config folder"
+  file:
+    path: "{{ nomad_config_dir }}"
+    state: directory
+    owner: nomad
+    group: nomad
+    mode: 0754
+    recurse: yes
+
+- name: Copy nomad initial config
+  copy:
+    src: nomad-main.json
+    dest: "{{ nomad_config_dir }}"
+    owner: nomad
+    group: nomad
+    mode: 0754
+
+- name: copy nosce empty file
+  copy:
+    src: nosce-nomad
+    dest: "{{ nosce_dir }}/nomad"
+    owner: root
+    group: root
+    mode: 0754

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+FILE=/etc/dnsmasq.d/99-dns
+
+eval $(dhcpcd -T | grep new_domain_name_servers)
+
+echo > $FILE
+for server in $new_domain_name_servers; do
+    echo "server=$server" >> $FILE
+done
+
