@@ -2,7 +2,7 @@
     "variables": {
         "profile": "",
         "region": "us-east-2",
-        "aws_ami_name": "nomad/pmarchi-centos-stable-standard-{{ timestamp }}",
+        "aws_ami_name": "frigobar/pmarchi-centos-stable-standard-{{ timestamp }}",
         "instance_type": "t2.medium",
         "ansible_playbook_file": "playbook.yaml"
     },
