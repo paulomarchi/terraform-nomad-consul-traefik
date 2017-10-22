@@ -31,18 +31,6 @@ variable "instance_type" {
   default     = "t2.micro"  
 }
 
-# Set Server instance type
-variable "nomad_server_instance_type" {
-  description = "Server Instance Type"
-  default     = "t2.micro"
-}
-
-# Set Node instance type
-variable "nomad_node_instance_type" {
-  description = "Node Instance Type"
-  default     = "t2.medium"
-}
-
 variable "namespace" {
   type        = "string"
   description = "namespace used by prefixes and resources tags"
@@ -78,7 +66,6 @@ variable "nomad_region" {
 variable "type_infra" {
   type        = "string"
   description = "The type of infra (server or client)"
-
 }
 
 variable "vpc_id" {

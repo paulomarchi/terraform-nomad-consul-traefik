@@ -16,11 +16,11 @@ data "aws_ami" "standard" {
 }
 
 module "frigobar-sg" {
-  source                    = "../security-groups"
-  namespace                 = "${var.namespace}"
-  profile                   = "${var.aws_profile}"
-  region                    = "${var.aws_region}"
-  vpc_id                    = "${var.vpc_id}"
+  source    = "../security-groups"
+  namespace = "${var.namespace}"
+  profile   = "${var.aws_profile}"
+  region    = "${var.aws_region}"
+  vpc_id    = "${var.vpc_id}"
 }
 
 # Create Userdata 
