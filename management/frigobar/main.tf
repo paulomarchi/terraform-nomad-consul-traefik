@@ -18,8 +18,8 @@ data "aws_ami" "standard" {
 module "frigobar-sg" {
   source                    = "../security-groups"
   namespace                 = "${var.namespace}"
-  profile                   = "${var.profile}"
-  region                    = "${var.region}"
+  profile                   = "${var.aws_profile}"
+  region                    = "${var.aws_region}"
   vpc_id                    = "${var.vpc_id}"
 }
 
@@ -42,20 +42,17 @@ module "cluster-instance" {
   source             = "../instance"
   userdata           = "${module.frigobar-init.userdata}"
   name_prefix        = "frigobar-${var.type_infra}"
-  subnet_cidr_blocks = "${var.subnet_cidr_blocks}"
   namespace          = "${var.namespace}"
   vpc_id             = "${var.vpc_id}"
   security_groups    = "${module.frigobar-sg.id}"
-  profile            = "${var.profile}"
+  profile            = "${var.aws_profile}"
   instance_type      = "${var.instance_type}"
-  region             = "${var.region}"
+  region             = "${var.aws_region}"
   key_name           = "${var.key_name}"
   cluster_size       = "${var.cluster_size}"
   subnet_ids         = "${var.subnet_ids}"
   ec2_tag_value      = "${var.ec2_tag_value}"
   image-search-path  = "${data.aws_ami.standard.id}"
-  ip_ini             = "${var.ip_ini}"
-  subnet_cidr_blocks = "${var.subnet_cidr_blocks}"
 }
 
 

@@ -1,11 +1,11 @@
-output "address_server" {
-  value = "${aws_instance.server.private_ip}"
+output "instance_ids" {
+  value = "${module.cluster-instance.instance_ids}"
 }
 
-output "address_node1" {
-  value = "${aws_instance.node1.private_ip}"
+output "address_instance_private" {
+  value = "${module.cluster-instance.private_ips}"
 }
 
-output "elastic ip" {
-  value = "${aws_eip.default.public_ip}"
+output "address_instance_public_ip" {
+  value = "${module.cluster-instance.public_ips}"
 }

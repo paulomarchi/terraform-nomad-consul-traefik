@@ -4,7 +4,7 @@ variable "aws_profile" {
 }
 
 # Set Keypair
-variable "aws_key_name" {
+variable "key_name" {
   description = "Name of the SSH keypair to use in AWS."
 }
 
@@ -23,6 +23,12 @@ variable "image-search-path" {
   type        = "string"
   description = "search path for custom ami in the cluster"
   default     = "frigobar/pmarchi-centos-stable-standard*"
+}
+
+variable "instance_type" {
+  type        = "string"
+  description = "Instance type"
+  default     = "t2.micro"  
 }
 
 # Set Server instance type
@@ -75,13 +81,16 @@ variable "type_infra" {
 
 }
 
-
-variable "vpc-id" {
+variable "vpc_id" {
   type        = "string"
   description = "vpc-id default"
   default     = "vpc-d2843abb"
 }
 
+variable "subnet_ids" {
+  type        = "string"
+  description = "list of all subnets in cluster VPC"
+}
 
 
 
