@@ -8,6 +8,8 @@ resource "aws_security_group" "default" {
   name        = "frigobar-sg-default"
   description = "Security Group Default "
 
+  vpc_id      = "${var.vpc_id}"
+  
   # SSH access from anywhere
   ingress {
     from_port   = 22

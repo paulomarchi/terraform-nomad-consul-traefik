@@ -11,7 +11,6 @@ variable "aws_region" {
 variable "image-search-path" {
   type        = "string"
   description = "search path for custom ami in the cluster"
-  default     = "frigobar/pmarchi-centos-stable-standard*"
 }
 
 variable "namespace" {
@@ -42,7 +41,7 @@ variable "instance_type" {
 }
 
 variable "subnet_ids" {
-  type        = "string"
+  type        = "list"
   description = "list of all subnets in cluster VPC"
 }
 
@@ -66,15 +65,4 @@ variable "ec2_tag_value" {
   type        = "string"
   default     = "brastemp"
   description = "tag value for join cluster"
-}
-
-variable "subnet_cidr_blocks" {
-  type        = "list"
-  description = "list of blocks of subnet for fixed ip's"
-}
-
-variable "ip_ini" {
-  type        = "string"
-  default     = 10
-  description = "initial reserved ip for the cluster"
 }

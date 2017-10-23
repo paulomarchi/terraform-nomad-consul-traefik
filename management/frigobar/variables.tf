@@ -8,10 +8,10 @@ variable "key_name" {
   description = "Name of the SSH keypair to use in AWS."
 }
 
-# Set  Path Private Key
-#variable "path_private_key" {
-#  description = "Insert path private_key"
-#}
+variable "vpc_id" {
+  description = "Insert path private_key"
+  default     = "vpc-d2843abb"
+}
 
 # AWS Regions
 variable "aws_region" {
@@ -28,7 +28,7 @@ variable "image-search-path" {
 variable "instance_type" {
   type        = "string"
   description = "Instance type"
-  default     = "t2.micro"  
+  default     = "t2.micro"
 }
 
 variable "namespace" {
@@ -68,16 +68,7 @@ variable "type_infra" {
   description = "The type of infra (server or client)"
 }
 
-variable "vpc_id" {
-  type        = "string"
-  description = "vpc-id default"
-  default     = "vpc-d2843abb"
-}
-
 variable "subnet_ids" {
-  type        = "string"
+  type        = "list"
   description = "list of all subnets in cluster VPC"
 }
-
-
-
