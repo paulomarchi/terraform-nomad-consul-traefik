@@ -9,9 +9,9 @@ variable "key_name" {
 }
 
 # Set  Path Private Key
-variable "path_private_key" {
-  description = "Insert path private_key"
-}
+#variable "path_private_key" {
+#  description = "Insert path private_key"
+#}
 
 # AWS Regions
 variable "aws_region" {

@@ -4,7 +4,6 @@ provider "aws" {
   profile = "${var.aws_profile}"
 }
 
-
 data "aws_ami" "standard" {
   most_recent = true
   owners      = ["self"]
