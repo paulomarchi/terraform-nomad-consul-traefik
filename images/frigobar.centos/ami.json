@@ -48,7 +48,7 @@
         "inline": [
           "sudo yum install epel-release -y",
           "sudo yum update -y",
-          "sudo yum install cloud-init awscli unzip gcc python-devel git python2-pip python34-pip python34-setuptools ansible -y"
+          "sudo yum install python-devel python2-pip python34-pip python34-setuptools ansible -y"
         ]
       },
         {
