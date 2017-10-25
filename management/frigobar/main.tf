@@ -4,12 +4,12 @@ provider "aws" {
   profile = "${var.aws_profile}"
 }
 
-module "frigobar-sg" {
-  source      = "../security-groups"
-  aws_profile = "${var.aws_profile}"
-  aws_region  = "${var.aws_region}"
-  vpc_id      = "${var.vpc_id}"
-}
+# module "frigobar-sg" {
+#   source      = "../security-groups"
+#   aws_profile = "${var.aws_profile}"
+#   aws_region  = "${var.aws_region}"
+#   vpc_id      = "${var.vpc_id}"
+# }
 
 # Create Userdata 
 module "frigobar-init" {
@@ -27,12 +27,14 @@ module "frigobar-init" {
 
 # Create Instance
 module "cluster-instance" {
-  source            = "../instance"
-  userdata          = "${module.frigobar-init.userdata}"
-  name_prefix       = "frigobar-${var.type_infra}"
-  namespace         = "${var.namespace}"
-  vpc_id            = "${var.vpc_id}"
-  security_groups   = "${module.frigobar-sg.id}"
+  source      = "../instance"
+  userdata    = "${module.frigobar-init.userdata}"
+  name_prefix = "frigobar-${var.type_infra}"
+  namespace   = "${var.namespace}"
+  vpc_id      = "${var.vpc_id}"
+
+  # security_groups   = "${module.frigobar-sg.id}"
+  security_groups   = "${var.security_groups}"
   aws_profile       = "${var.aws_profile}"
   instance_type     = "${var.instance_type}"
   aws_region        = "${var.aws_region}"

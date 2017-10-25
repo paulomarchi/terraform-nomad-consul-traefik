@@ -72,8 +72,3 @@ variable "subnet_ids" {
   type        = "list"
   description = "list of all subnets in cluster VPC"
 }
-
-variable "security_groups" {
-  type        = "string"
-  description = "security groups from the cluster"
-}
