@@ -16,3 +16,6 @@
   - vim
   - awscli
   - cloud-init
+- name: "Disable Selinux"
+  selinux:
+    state: disabled
