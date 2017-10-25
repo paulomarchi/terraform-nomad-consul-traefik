@@ -1,15 +1,23 @@
 # Specify the provider and access details
 provider "aws" {
   profile = "${var.aws_profile}"
-  region = "${var.aws_region}"
+  region  = "${var.aws_region}"
 }
 
 resource "aws_security_group" "default" {
   name        = "frigobar-sg-default"
   description = "Security Group Default "
 
-  vpc_id      = "${var.vpc_id}"
-  
+  vpc_id = "${var.vpc_id}"
+
+  # All traffic to sg-default
+  ingress {
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    self      = true
+  }
+
   # SSH access from anywhere
   ingress {
     from_port   = 22
