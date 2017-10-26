@@ -14,7 +14,7 @@ module "server" {
   nomad_prefix    = "${var.nomad_prefix}"
   nomad_region    = "${var.nomad_region}"
   subnet_ids      = "${var.subnet_ids}"
-  type_infra      = "${var.type_infra}"
+  type_infra      = "server"
   security_groups = "${module.frigobar-sg.id}"
 }
 
@@ -27,6 +27,6 @@ module "client" {
   nomad_prefix    = "${var.nomad_prefix}"
   nomad_region    = "${var.nomad_region}"
   subnet_ids      = "${var.subnet_ids}"
-  type_infra      = "${var.type_infra}"
+  type_infra      = "client"
   security_groups = "${module.frigobar-sg.id}"
 }
