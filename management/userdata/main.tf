@@ -9,6 +9,7 @@ data "template_file" "init" {
   vars {
     region           = "${var.aws_region}"
     nomad_region     = "${var.nomad_region}"
+    nomad_class      = "${var.nomad_class}"
     prefix           = "${coalesce(var.nomad_prefix, var.datacenter, var.nomad_region, var.type_infra)}"
     datacenter       = "${var.datacenter}"
     ec2_tag_key      = "Service"

@@ -6,7 +6,7 @@ metadata > /etc/nosce/metadata
 # Consul Server Conf
 cat << EOF > /etc/consul/conf.d/server.json
 {
-  "ui" : false,
+  "ui" : true,
 	"server": true,
 	"bootstrap_expect": ${bootstrap_expect},
 	"datacenter": "${datacenter}",

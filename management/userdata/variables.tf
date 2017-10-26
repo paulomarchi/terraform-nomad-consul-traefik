@@ -8,7 +8,7 @@ variable "aws_region" {
 }
 
 variable "type_infra" {
-  type = "string"
+  type        = "string"
   description = "The type of infra (server or client)"
 }
 
@@ -44,6 +44,8 @@ variable "nomad_region" {
   description = "Group of datacenters with same geografic region ( ueast2a, useast2b, ...)"
 }
 
-
-
-
+variable "nomad_class" {
+  type        = "string"
+  description = "Class name will be used in nomad-clients agents, will be used a constraint of services"
+  default     = "linux-64bit"
+}

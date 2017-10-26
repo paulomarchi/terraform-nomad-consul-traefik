@@ -63,17 +63,7 @@ variable "nomad_region" {
   description = "Group of datacenters with same geografic region ( us, eu, ...)"
 }
 
-variable "type_infra" {
-  type        = "string"
-  description = "The type of infra (server or client)"
-}
-
 variable "subnet_ids" {
   type        = "list"
   description = "list of all subnets in cluster VPC"
-}
-
-variable "security_groups" {
-  type        = "string"
-  description = "security groups from the cluster"
 }
