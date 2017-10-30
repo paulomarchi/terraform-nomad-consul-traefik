@@ -1,8 +1,3 @@
-provider "aws" {
-  profile = "${var.aws_profile}"
-  region  = "${var.aws_region}"
-}
-
 data "aws_ami" "standard" {
   most_recent = true
   owners      = ["self"]

@@ -1,16 +1,3 @@
-# Specify the provider and access details
-provider "aws" {
-  region  = "${var.aws_region}"
-  profile = "${var.aws_profile}"
-}
-
-# module "frigobar-sg" {
-#   source      = "../security-groups"
-#   aws_profile = "${var.aws_profile}"
-#   aws_region  = "${var.aws_region}"
-#   vpc_id      = "${var.vpc_id}"
-# }
-
 # Create Userdata 
 module "frigobar-init" {
   source        = "../userdata"

@@ -1,8 +1,3 @@
-provider "aws" {
-  region  = "${var.aws_region}"
-  profile = "${var.aws_profile}"
-}
-
 resource "aws_iam_policy" "ec2-describe-instances" {
   description = "EC2 Describe Instances Policy for namespace ${var.namespace}"
 

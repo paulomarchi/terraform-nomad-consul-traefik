@@ -1,8 +1,3 @@
-provider "aws" {
-  profile = "${var.aws_profile}"
-  region  = "${var.aws_region}"
-}
-
 data "template_file" "init" {
   template = "${file("${path.module}/${var.type_infra}_userdata.sh.tpl")}"
 
