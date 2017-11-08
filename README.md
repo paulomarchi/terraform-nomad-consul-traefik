@@ -10,20 +10,24 @@ Requeriments
     Packer
     Terraform
 
-## Running the example
+# Running the example
 
-### Download and install modules for the configuration
+## Download and install modules for the configuration
 ```
 $ terraform get
 ```
 ### Generate and show an execution plan
 ```
-$ `terraform plan -var 'aws_profile={your_profile}' -var 'datacenter={your_datacenter}' -var 'key_name={your_keyname}' -var 'namespace={your_namespace}' -var 'nomad_prefix={your_prefix}' -var 'nomad_region={your_nomd_region}' -var 'subnet_ids=["{your_subnets_id}}"]'`
+$ terraform plan -var 'aws_profile={your_profile}' -var 'datacenter={your_datacenter}' \ 
+-var 'key_name={your_keyname}' -var 'namespace={your_namespace}' -var 'nomad_prefix={your_prefix}' \
+-var 'nomad_region={your_nomd_region}' -var 'subnet_ids=["{your_subnets_id}}"]'
 ```
 
 ### Builds or changes infrastructure
 ```
-$ `terraform apply -var 'aws_profile={your_profile}' -var 'datacenter={your_datacenter}' -var 'key_name={your_keyname}' -var 'namespace={your_namespace}' -var 'nomad_prefix={your_prefix}' -var 'nomad_region={your_nomd_region}' -var 'subnet_ids=["{your_subnets_id}}"]'`
+$ terraform apply -var 'aws_profile={your_profile}' -var 'datacenter={your_datacenter}' \
+-var 'key_name={your_keyname}' -var 'namespace={your_namespace}' -var 'nomad_prefix={your_prefix}' \
+-var 'nomad_region={your_nomd_region}' -var 'subnet_ids=["{your_subnets_id}}"]'
 ```
 
 Docs
