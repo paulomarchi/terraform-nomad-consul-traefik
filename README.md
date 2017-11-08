@@ -1,6 +1,6 @@
 # Terraform - Nomad - Consul - Traefik - Example
 
-The project launches a Nomad + Consul + Traefik using a Terraform
+The project launches a Nomad + Consul + Traefik using Packer and Terraform
 
 To run, configure your AWS provider as described in https://www.terraform.io/docs/providers/aws/index.html
 
