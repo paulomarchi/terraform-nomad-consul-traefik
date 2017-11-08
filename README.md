@@ -43,8 +43,7 @@ $ terraform apply -var 'aws_profile={your_profile}' -var 'datacenter={your_datac
 ```
 
 ## Docs
- * **Armon Dadgar @armon:**
- https://cdn.oreillystatic.com/en/assets/1/event/244/Nomad%20and%20next-generation%20application%20architectures%20Presentation.pdf
+ * **Armon Dadgar @armon:** [Presentation.pdf](https://cdn.oreillystatic.com/en/assets/1/event/244/Nomad%20and%20next-generation%20application%20architectures%20Presentation.pdf)
  * **Nomad Getting Started:** https://www.nomadproject.io/intro/index.html
  * **Consul Getting Started:** https://www.consul.io/intro/index.html
  * **Pluralsight:** https://www.pluralsight.com/courses/consul-getting-started
