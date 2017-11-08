@@ -50,3 +50,7 @@ $ terraform apply -var 'aws_profile={your_profile}' -var 'datacenter={your_datac
  * **Terraform Getting Started:** https://www.terraform.io/intro/index.html)
  * **Packer:** [Getting Started](https://www.packer.io/intro/index.html)
 
+# TODO
+* **Finish image frigobar.amz**
+* **Finish image frigobar.coreos**
+* **Create infrastructure Traefik**
