@@ -22,7 +22,7 @@ variable "aws_region" {
 variable "image-search-path" {
   type        = "string"
   description = "search path for custom ami in the cluster"
-  default     = "frigobar/pmarchi-centos-stable-standard*"
+  default     = "frigobar/example-centos-stable-standard*"
 }
 
 variable "instance_type" {
