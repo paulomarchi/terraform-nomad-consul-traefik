@@ -1,10 +1,9 @@
 <img src="pics/wip2.jpeg" width="90">
 
-# Terraform - Nomad - Consul - Traefik - Example
+# Packer - Terraform - Nomad - Consul - Traefik
 
-The project launches a Nomad + Consul + Traefik using Packer and Terraform
-
-To run, configure your AWS provider as described in https://www.terraform.io/docs/providers/aws/index.html
+The project was created to learn more about Nomad, Consul and Trafik using Packer and Terraform tools. All the infrastructure are performing in Amazon Web Services.
+Feel free to contribute.
 
 ## Requeriments
    * **AWS Account:** https://console.aws.amazon.com
@@ -15,14 +14,18 @@ To run, configure your AWS provider as described in https://www.terraform.io/doc
 ## Running the example
 
 ### Packer
-#### build image(s) from template
+#### Check that a template is valid
+````
+$ packer validate images/frigobar.centos/ami.json
+````
+#### Build image(s) from template
 ```
-$ packer build  
+$ packer build -var 'profile={your_profile}' images/frigobar.centos/ami.json
 ```
-
 ### Terraform
 #### Download and install modules for the configuration
 ```
+$ cd management/_structure_init
 $ terraform get
 ```
 #### Generate and show an execution plan
