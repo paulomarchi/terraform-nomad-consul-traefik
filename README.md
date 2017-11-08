@@ -10,7 +10,7 @@ Requeriments
     Packer
     Terraform
 
-### Running the example
+## Running the example
 
 ### Download and install modules for the configuration
 ```
