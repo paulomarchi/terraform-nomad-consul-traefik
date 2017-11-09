@@ -4,4 +4,4 @@ key_name = ""
 namespace = "frigobar"
 nomad_prefix = "us-est"
 nomad_region = "us-east-2"
-subnet_ids = "["subnet-xxxx","subnet-yyyyyyy","subnet-zzzzzzzzz"]"
+subnet_ids = ["subnet-xxxx","subnet-yyyyyyy","subnet-zzzzzzzzz"]
