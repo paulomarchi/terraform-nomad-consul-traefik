@@ -1,4 +1,4 @@
-<img src="pics/wip2.jpeg" width="90">
+![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
 
 # Packer - Terraform - Nomad - Consul - Traefik
 
