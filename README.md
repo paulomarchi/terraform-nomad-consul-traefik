@@ -37,6 +37,21 @@ $ terraform plan -var-file="init_data.tfvars"
 ```
 $ terraform apply -var-file="init_data.tfvars"
 ```
+#### Read an output from a state file
+```
+$ terraform output
+```
+
+### Nomad
+```
+$ export NOMAD_ADDR=http://18.216.245.253:4646
+$ nomad status
+```
+
+### Consul
+```
+export CONSUL_HTTP_ADDR=18.216.245.253:8500
+````
 
 ## Docs
  * **Armon Dadgar @armon:** [Presentation.pdf](https://cdn.oreillystatic.com/en/assets/1/event/244/Nomad%20and%20next-generation%20application%20architectures%20Presentation.pdf)

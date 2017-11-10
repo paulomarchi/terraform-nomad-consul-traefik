@@ -36,11 +36,6 @@ EOF
 
 chown nomad:nomad /etc/nomad/conf.d/client.json
 
-
-cat << EOF > /etc/nosce/nomad
-NOMAD_OPTIONS=""
-EOF
-
 # http://dustymabe.com/2015/08/03/installingstarting-systemd-services-using-cloud-init/
 systemctl enable --now --no-block consul
 systemctl enable --now --no-block nomad

@@ -4,7 +4,7 @@ job "netdata" {
   type = "service"
 
   group "netdata-app" {
-    count = "1"
+    count = "2"
     task "server" {
       driver = "docker"
 
@@ -17,12 +17,14 @@ job "netdata" {
 
       resources {
         network {
-          mbits = 10
+          mbits = 1
           port "http" {
             static = "19999"
           }
         }
       }
+
+      
     }
   }
 }
