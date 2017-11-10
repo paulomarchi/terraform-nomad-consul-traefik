@@ -4,7 +4,7 @@ job "netdata" {
   type = "service"
 
   group "netdata-app" {
-    count = "2"
+    count = "1"
     task "server" {
       driver = "docker"
 
@@ -24,7 +24,16 @@ job "netdata" {
         }
       }
 
-      
+      service {
+        name = "netdata-check"
+        port = "http"
+        check {
+          name     = "alive"
+          type     = "tcp"
+          interval = "10s"
+          timeout  = "2s"
+        }
+      }
     }
   }
 }
